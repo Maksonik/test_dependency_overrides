@@ -67,6 +67,7 @@ class AppFactory(FastAPI):
 
             async def get_singleton_service() -> DataService:
                 logger.info(f"return singleton_service, id - {id(singleton_service)}")
+                # тот же инстанс ок, а как инфу про дебаг хедер получить?
                 return singleton_service
 
             # вся магия перезаписи! Теперь у нас один обьект на все запрос

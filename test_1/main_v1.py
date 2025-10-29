@@ -25,6 +25,7 @@ class MockDatabaseService:
         self.request = request
 
     async def get_request(self) -> dict[str, Any]:
+        print(f'------------------------- {id(self)}')
         debugging_header = self.request.headers.get("debugging")
         if debugging_header:
             # То что ты и просил. Не могу понять только, почему ты хотел чтобы это работало как сингилтон
