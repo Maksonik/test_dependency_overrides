@@ -1,0 +1,18 @@
+[project]
+name = "test-dependency-overrides"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Sustavov Maksim",email = "maksim.sustavov@edgecenter.ru"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard] (>=0.120.1,<0.121.0)",
+    "uvicorn (>=0.38.0,<0.39.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

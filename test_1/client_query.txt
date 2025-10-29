@@ -1,0 +1,9 @@
+from starlette.testclient import TestClient
+
+from main_v1 import app
+
+client = TestClient(app)
+resp = client.get("/health", headers={"debugging": "on"})
+print(resp.status_code, resp.json())
+
+# или curl -H "debugging: 1" http://127.0.0.1:8001/health
