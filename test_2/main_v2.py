@@ -64,8 +64,13 @@ class AppFactory(FastAPI):
         async with AsyncExitStack() as astack:
             singleton_service = DataService(params={"name": "Alex from lifespan"})
             logger.info("create DataService one times")
+
+            async def get_singleton_service() -> DataService:
+                logger.info(f"return singleton_service, id - {id(singleton_service)}")
+                return singleton_service
+
             # вся магия перезаписи! Теперь у нас один обьект на все запрос
-            app.dependency_overrides.setdefault(di_data_service, lambda: singleton_service)
+            app.dependency_overrides.setdefault(di_data_service, get_singleton_service)
             yield
 
 
